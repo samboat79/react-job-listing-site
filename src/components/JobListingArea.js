@@ -39,7 +39,7 @@ class JobListingArea extends Component{
         
     );
     }
-}
+
 render() { 
     return (
       <div className="job_listing_area pt-1">
@@ -52,5 +52,6 @@ render() {
     </div>
     );
 };
+}
 
 export default JobListingArea;
