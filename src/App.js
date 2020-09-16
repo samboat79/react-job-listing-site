@@ -3,22 +3,29 @@ import './App.css';
 import FooterSection from "./components/FooterSection"
 import HeaderSection from "./components/HeaderSection"
 import SearchInputForms from "./components/SearchInputForms"
-import JobListingArea from "./components/JobListingArea";
+import JobListing from "./components/JobListing";
 import JobDetails from "./components/JobDetails"
+import {BrowserRouter, Route} from "react-router-dom";
+
+
+
 
 class App extends React.Component {
   render() {
     return(
-    <div>
-          <HeaderSection />
-          <SearchInputForms />
-          <JobListingArea />
-          <JobDetails />
+  <div>
+    <HeaderSection />
 
-          <FooterSection />
-      </div>
+  <BrowserRouter>
+    <Route exact path="/" component={JobListing} />
+    <Route path="/details/:id" component={JobDetails} />
+  </BrowserRouter>
+)
+  <FooterSection />
+</div>
    );
+    }
   }
-}
+
 
 export default App;
