@@ -1,0 +1,3 @@
+export const FILTERJOBS = 'FILTERJOBS';
+export const FETCHJOBS = 'FETCHJOBS';
+export const FETCHJOBDETAILS = 'FETCHJOBDETAILS';

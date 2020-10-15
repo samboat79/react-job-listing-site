@@ -1,6 +1,5 @@
 import React from "react";
-import react, { Component } from 'react';
-import {render} from 'react-dom';
+import  { Component } from 'react';
 import { Link } from 'react-router-dom';
 
 class JobContent extends Component{
@@ -13,27 +12,27 @@ class JobContent extends Component{
                     <img src="img/svg_icon/1.svg" alt="" />
                 </div>
                 <div className="jobs_conetent">
-                    <Link className="col-lg-12" to={'/details/1'}>
-                    <h4>Software Engineer</h4>
+                    <Link className="col-lg-12" to={'/details/'+ this.props.job.id}>
+                    <h4>{this.props.job.title}</h4>
           </Link>
                     <div className="links_locat d-flex align-items-center">
                         <div className="location">
-                            <p> <i className="fa fa-map-marker"></i> California, USA</p>
+                            <p> <i className="fa fa-map-marker"></i> {this.props.job.location}</p>
                         </div>
                         <div className="location">
-                            <p> <i className="fa fa-clock-o"></i> Part-time</p>
+                            <p> <i className="fa fa-clock-o"></i> {this.props.job.type}</p>
                         </div>
                     </div>
                 </div>
             </div>
             <div className="jobs_right">
                 <div className="apply_now">
-                    <Link className="boxed-btn3" to={'/details/1'}>Apply Now
+                    <Link className="boxed-btn3" to={'/details/'+ this.props.job.id}>Apply Now
             <i className="fas fa-chevron-right" />
           </Link>
                 </div>
                 <div className="date">
-                    <p>Date line: 31 Jan 2020</p>
+                    <p>{this.props.job.created_at}</p>
                 </div>
             </div>
         </div>

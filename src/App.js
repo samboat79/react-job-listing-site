@@ -1,11 +1,13 @@
 import React from 'react';
+import {Provider} from "react-redux";
 import './App.css';
 import FooterSection from "./components/FooterSection"
 import HeaderSection from "./components/HeaderSection"
-import SearchInputForms from "./components/SearchInputForms"
 import JobListing from "./components/JobListing";
 import JobDetails from "./components/JobDetails"
 import {BrowserRouter, Route} from "react-router-dom";
+
+import store from "./store";
 
 
 
@@ -13,6 +15,7 @@ import {BrowserRouter, Route} from "react-router-dom";
 class App extends React.Component {
   render() {
     return(
+      <Provider store={store}>
   <div>
     <HeaderSection />
 
@@ -23,6 +26,7 @@ class App extends React.Component {
 )
   <FooterSection />
 </div>
+ </Provider>
    );
     }
   }

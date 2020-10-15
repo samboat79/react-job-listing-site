@@ -1,11 +1,18 @@
 import React from "react";
-import ReactDOM from 'react-dom';
-import react, { Component } from 'react';
+import { Component } from 'react';
 import JobContent from "./JobContent";
-import SearchInputForms from "./SearchInputForms"
+import SearchInputForms from "./SearchInputForms";
+import { connect } from 'react-redux';
+import {fetchJobs} from "../actions/searchActions"
+
 
 
 class JobListing extends Component{
+
+    componentDidMount(){
+        this.props.fetchJobs (this.props.description, this.props.fulltime, this.props.location);
+      }
+
     render() {
         return(
             <div>
@@ -18,9 +25,10 @@ class JobListing extends Component{
             <div className="row">
                 <div className="col-lg-12 col-md-12 mb-30">
                     <div className="job_details_header">
-                    <JobContent />
-                    <JobContent />
-                    <JobContent />
+                    {this.props.jobs.map((x, i) => 
+                <JobContent key={i} job={x} pic={i} />
+              )}
+
                         </div>
                     </div>
                     
@@ -36,4 +44,18 @@ class JobListing extends Component{
     }
 }
 
-export default JobListing;
+    const mapStateToProps = (state) => {
+    return {
+        jobs: state.jobs.jobs,
+      location: state.jobs.location,
+      description: state.jobs.description,
+      fulltime: state.jobs.fulltime
+    }
+  }
+   
+  const mapDispatchToProps = {
+    fetchJobs
+  }
+  
+  
+  export default connect(mapStateToProps, mapDispatchToProps)(JobListing);
